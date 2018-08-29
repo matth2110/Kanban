@@ -1,0 +1,81 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+
+
+  
+  <div class="row">
+    <div class="col-md-3 col-sm-3">Research/Coding</div>
+    <div class="col-md-3 col-sm-3">QA</div>
+    <div class="col-md-3 col-sm-3">UAT</div>
+    <div class="col-md-3 col-sm-3">Staging</div> 
+  </div>
+  <hr>
+
+<div class="row">
+    <div class="col-md-3 col-sm-3">
+    {% for ticket in object_list %}
+        {%if ticket.status == "Research" or ticket.status == "Coding" %}
+            <div class="w3-card w3-blue">
+                <div class="w3-center"><a href="/updateticket/{{ticket.ticket_number}}">{{ticket.ticket_number}}</a></div>
+                <div>{{ticket.ticket_description}}</div>
+                <div>{{ticket.open_date}}</div>
+                <div>{{ticket.hours_to_complete}} Hours</div>
+            </div><br>
+        {% endif %}
+    {% endfor %}
+    </div>
+ 
+
+  
+    <div class="col-md-3 col-sm-3">
+    {% for ticket in object_list %}
+        {%if ticket.status == "QA" %}
+            <div class="card w3-dark-grey">
+                <div class="w3-center">{{ticket.ticket_number}}</div>
+                <div>{{ticket.ticket_description}}</div>
+                <div>{{ticket.open_date}}</div>
+                <div>{{ticket.hours_to_complete}} Hours</div>
+            </div><br>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+
+  
+    <div class="col-md-3 col-sm-3">
+    {% for ticket in object_list %}
+        {%if ticket.status == "UAT" %}
+            <div class="card w3-green">
+                <div class="w3-center">{{ticket.ticket_number}}</div>
+                <div>{{ticket.ticket_description}}</div>
+                <div>{{ticket.open_date}}</div>
+                <div>{{ticket.hours_to_complete}} Hours</div>
+            </div><br>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+
+  
+    <div class="col-md-3 col-sm-3">
+    {% for ticket in object_list %}
+        {% if ticket.status == "Staging" %}
+            <div class="card w3-red">
+                <div class="w3-center">{{ticket.ticket_number}}</div>
+                <div>{{ticket.ticket_description}}</div>
+                <div>{{ticket.open_date}}</div>
+                <div>{{ticket.hours_to_complete}} Hours</div>
+            </div><br>
+        {% endif %}
+    {% endfor %}
+    </div> 
+    
+</div>
+
+
+{% endblock %}

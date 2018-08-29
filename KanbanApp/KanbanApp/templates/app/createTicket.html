@@ -1,0 +1,19 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<center>
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<form method="POST" action=""> {% csrf_token %}
+    <div>
+        
+            {{form}}
+
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success" value="submit">Submit</button>
+</form> 
+</center>
+{% endblock %}
+
